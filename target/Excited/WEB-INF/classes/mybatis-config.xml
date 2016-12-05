@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="User" type="com.excited.domain.User"/>
+        <typeAlias alias="Board" type="com.excited.domain.Board"/>
+        <typeAlias alias="UserLoginLog" type="com.excited.domain.UserLoginLog"/>
+        <typeAlias alias="Post" type="com.excited.domain.Post"/>
+        <typeAlias alias="Reply" type="com.excited.domain.Reply"/>
+    </typeAliases>
+</configuration>
