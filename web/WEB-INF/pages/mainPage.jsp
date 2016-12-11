@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Every one should +1s!</title>
+    <title>板块</title>
     <link rel="stylesheet" href="../resources/css/material-icons.css">
     <link rel="stylesheet" href="../resources/css/material.min.css">
     <script type="text/javascript" src="../resources/js/material.min.js"></script>
