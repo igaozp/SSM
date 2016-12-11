@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    public UserDao userDao;
+    private UserDao userDao;
 
     @Override
     public void addUser(User user) {

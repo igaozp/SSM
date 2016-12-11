@@ -12,7 +12,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .button {
             margin-top: 75px;
             margin-bottom: 75px;

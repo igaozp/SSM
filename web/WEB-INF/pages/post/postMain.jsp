@@ -74,7 +74,8 @@
                             <c:choose>
                                 <c:when test="${username != null && username == 'admin'}">
                                     <div class="mdl-card__actions mdl-card--border">
-                                        <a class="mdl-button mdl-js-button mdl-color-text--pink-400">删除</a>
+                                        <a class="mdl-button mdl-js-button mdl-color-text--pink-400"
+                                           href="/admin/deletePost?postId=${post.postId}&postBoardId=${post.postBoardId}">删除</a>
                                     </div>
                                 </c:when>
                             </c:choose>

@@ -19,4 +19,6 @@ public interface BoardDao {
     public Board findBoardByBoardName(String boardName);
 
     public void updateBoardByBoard(Board board);
+
+    public void deleteBoardById(int boardId);
 }

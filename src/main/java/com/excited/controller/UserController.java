@@ -18,17 +18,17 @@ import java.util.Date;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    LoginLogService loginLogService;
+    private LoginLogService loginLogService;
 
     // 用户登录
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public String userLogin(User loginUser, HttpServletRequest request, RedirectAttributes redirect) {
         // 通过用户名查找User对象
         User user = userService.getUserByUserName(loginUser.getUserName());
-        String password = new String();
+        String password = "";
         if (user != null) {
             password = userService.getPassword(user.getUserName());
         }

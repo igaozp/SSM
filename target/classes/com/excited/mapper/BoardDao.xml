@@ -101,4 +101,9 @@
         </if>
         WHERE board_id = #{boardId}
     </update>
+
+    <delete id="deleteBoardById" parameterType="int">
+        DELETE FROM t_board
+        WHERE t_board.board_id = #{boardId}
+    </delete>
 </mapper>

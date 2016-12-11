@@ -12,8 +12,9 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .card-width {
-            min-width: 500px;
+            width: 500px;
         }
     </style>
 </head>
@@ -29,7 +30,8 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link mdl-color-text--pink-400" href="/user/listUserInfo?username=${username}">${username}</a>
+                <a class="mdl-navigation__link mdl-color-text--pink-400"
+                   href="/user/listUserInfo?username=${username}">${username}</a>
                 <a class="mdl-navigation__link mdl-color-text--black" href="/user/loginOut">注销</a>
                 <a class="mdl-navigation__link mdl-color-text--black" href="/addBoard">添加板块</a>
             </nav>
@@ -54,19 +56,26 @@
                             </tr>
                             <tr>
                                 <td>版块描述:</td>
-                                <td>${boards.boardDesc}</td>
+                                <td style="max-width: 300px;width: 300px">
+                                    <span style="width: 80%">${boards.boardDesc}</span>
+                                </td>
                             </tr>
                             <tr>
                                 <td>版块总帖数:</td>
                                 <td>${boards.boardPostNum}</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <a href="/updateBoardPage?boardId=${boards.boardId}"
-                                       class="mdl-button mdl-js-button mdl-color-text--pink-400">修改</a>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <div align="right">
+                                        <a href="/updateBoardPage?boardId=${boards.boardId}"
+                                           class="mdl-button mdl-js-button mdl-color-text--pink-400">修改</a>
+                                    </div>
                                 </td>
-                                <td>
-                                    <a href="" class="mdl-button mdl-js-button mdl-color-text--pink-400">删除</a>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <div align="right">
+                                        <a href="/admin/deleteBoard?boardId=${boards.boardId}"
+                                           class="mdl-button mdl-js-button mdl-color-text--pink-400">删除</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>

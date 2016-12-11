@@ -10,4 +10,6 @@ public interface PostService {
     public Post listPostContent(int postId);
 
     public List<Post> listAllPost();
+
+    public void deletePost(int postId);
 }

@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="../../resources/css/material.min.css">
     <script type="text/javascript" src="../../resources/js/material.min.js"></script>
     <script type="text/javascript" src="../../resources/js/jquery-3.1.1.min.js"></script>
+    <style>
+        table{
+            table-layout: fixed;
+        }
+        td{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
 <!-- Uses a header that scrolls with the text, rather than staying
@@ -46,7 +56,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td width="150px">${post.postTitle}</td>
+                                <td width="450px">${post.postTitle}</td>
                                 <td width="100px">${post.postUserName}</td>
                                 <td>${post.postId}</td>
                                 <td>${post.postReplyCount}</td>

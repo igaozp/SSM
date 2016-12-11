@@ -1,7 +1,6 @@
 package com.excited.service;
 
 import com.excited.domain.Board;
-
 import java.util.List;
 
 public interface BoardService {
@@ -20,4 +19,6 @@ public interface BoardService {
     public void updatePostNum(int boardId);
 
     public void updateBoardInfo(Board board);
+
+    public void deleteBoard(int boardId);
 }

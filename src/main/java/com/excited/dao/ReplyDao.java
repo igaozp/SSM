@@ -10,4 +10,6 @@ public interface ReplyDao {
     public void addReply(Reply reply);
 
     public List<Reply> listReplyByPostId(int postId);
+
+    public void deleteReplyById(int postId);
 }

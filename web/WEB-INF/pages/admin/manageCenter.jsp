@@ -25,7 +25,7 @@
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <nav class="mdl-navigation">
                 <a class="mdl-navigation__link mdl-color-text--pink-400"
                    href="/user/listUserInfo?username=${username}">${username}</a>
                 <a class="mdl-navigation__link mdl-color-text--black" href="/user/loginOut" name="logout">注销</a>

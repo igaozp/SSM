@@ -5,6 +5,7 @@ import com.excited.domain.Post;
 import com.excited.domain.User;
 import com.excited.service.BoardService;
 import com.excited.service.PostService;
+import com.excited.service.ReplyService;
 import com.excited.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class AdminController {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    ReplyService replyService;
 
     // 论坛管理中心
     @RequestMapping(value = "/manageCenter")
@@ -70,6 +74,7 @@ public class AdminController {
         return "redirect:/error";
     }
 
+    // 管理用户信息
     @RequestMapping(value = "manageUser")
     public String manageUser(HttpServletRequest request) {
         List<User> users = userService.getAllUser();
@@ -81,6 +86,7 @@ public class AdminController {
         return "redirect:/error";
     }
 
+    // 管理发表的主题
     @RequestMapping(value = "managePost")
     public String managePost(HttpServletRequest request) {
         List<Post> posts = postService.listAllPost();
@@ -90,5 +96,26 @@ public class AdminController {
         }
 
         return "redirect:/error";
+    }
+
+    // 删除已经发表的主题
+    @RequestMapping(value = "deletePost")
+    public String deletePost(int postId, int postBoardId) {
+        postService.deletePost(postId);
+        return "redirect:/board/listPosts-" + postBoardId;
+    }
+
+    // 删除回复
+    @RequestMapping(value = "deleteReply")
+    public String deleteReply(int replyId, int replyPostId) {
+        replyService.deleteReply(replyId);
+        return "redirect:/post/postContent-" + replyPostId;
+    }
+
+    @RequestMapping(value = "deleteBoard")
+    public String deleteBoard(int boardId) {
+        boardService.deleteBoard(boardId);
+
+        return "redirect:manageBoard";
     }
 }

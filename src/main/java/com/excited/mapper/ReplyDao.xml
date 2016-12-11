@@ -61,4 +61,9 @@
         VALUES
         (#{replyPostId}, #{replyUserName},#{replyContent},#{replyCreateTime})
     </insert>
+    <!--删除回复-->
+    <delete id="deleteReplyById" parameterType="int">
+        DELETE FROM t_reply
+        WHERE t_reply.reply_id = #{replyId}
+    </delete>
 </mapper>

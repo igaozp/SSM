@@ -27,4 +27,9 @@ public class ReplyServiceImpl implements ReplyService {
     public List<Reply> listReplyByPostId(int replyPostId) {
         return replyDao.listReplyByPostId(replyPostId);
     }
+
+    @Override
+    public void deleteReply(int replyId) {
+        replyDao.deleteReplyById(replyId);
+    }
 }

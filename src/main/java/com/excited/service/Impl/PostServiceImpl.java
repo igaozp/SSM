@@ -27,4 +27,9 @@ public class PostServiceImpl implements PostService {
     public List<Post> listAllPost() {
         return postDao.listAllPostInfo();
     }
+
+    @Override
+    public void deletePost(int postId) {
+        postDao.deletePostById(postId);
+    }
 }

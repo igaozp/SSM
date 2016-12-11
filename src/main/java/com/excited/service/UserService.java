@@ -1,7 +1,6 @@
 package com.excited.service;
 
 import com.excited.domain.User;
-
 import java.util.List;
 
 public interface UserService {

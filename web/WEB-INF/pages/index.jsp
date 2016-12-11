@@ -12,7 +12,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .button {
             margin-top: 75px;
             margin-bottom: 75px;
@@ -29,7 +28,7 @@
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <nav class="mdl-navigation">
                 <c:choose>
                     <c:when test="${username != null}">
                         <a class="mdl-navigation__link mdl-color-text--pink-400"

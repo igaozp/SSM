@@ -59,9 +59,8 @@
     <!--通过id查找帖子-->
     <select id="findPostByPostId" parameterType="int" resultMap="PostAndUserAndReplyMap">
         SELECT *
-        FROM t_post P,t_user U,t_reply R
-        WHERE P.post_user_name = U.user_name
-        AND P.post_id = #{postId}
+        FROM t_post
+        WHERE  t_post.post_id =  #{postId}
     </select>
     <!--列出全部主题信息-->
     <select id="listAllPostInfo" resultMap="PostMap">
@@ -69,7 +68,12 @@
         <include refid="post_columns"/>
         FROM t_post
     </select>
-
+    <!--删除帖子-->
+    <select id="deletePostById" parameterType="int">
+        DELETE FROM t_post
+        WHERE t_post.post_id = #{postId}
+    </select>
+    <!--添加帖子-->
     <insert id="addPost" parameterType="Post" keyProperty="postId" useGeneratedKeys="true">
         INSERT INTO t_post
         <trim prefix="(" suffix=")" suffixOverrides=",">

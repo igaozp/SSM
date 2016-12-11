@@ -12,11 +12,6 @@
     <context:component-scan base-package="com.excited.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-
-    <!--<context:component-scan base-package="com.excited"/>-->
-    <!--<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="location" value="classpath:jdbc.properties"/>-->
-    <!--</bean>-->
     <!--数据库连接池-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc_driver}"/>
