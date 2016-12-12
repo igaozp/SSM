@@ -36,13 +36,12 @@
         FROM t_user
         WHERE user_name = #{userName}
     </select>
-
+    <!--获取所有用户信息-->
     <select id="getAllUserInfo" resultMap="userMap">
         SELECT
         <include refid="user_columns"/>
         FROM t_user
     </select>
-
     <!--通过id查找用户-->
     <select id="findUserByUserId" parameterType="int" resultType="com.excited.domain.User">
         SELECT

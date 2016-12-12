@@ -112,10 +112,10 @@ public class AdminController {
         return "redirect:/post/postContent-" + replyPostId;
     }
 
+    // 删除板块
     @RequestMapping(value = "deleteBoard")
     public String deleteBoard(int boardId) {
         boardService.deleteBoard(boardId);
-
         return "redirect:manageBoard";
     }
 }

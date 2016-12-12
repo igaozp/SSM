@@ -14,4 +14,6 @@ public interface PostDao {
     public List<Post> listAllPostInfo();
 
     public void deletePostById(int postId);
+
+    public void updatePostByPost(Post post);
 }

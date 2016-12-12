@@ -12,7 +12,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .card-width {
             width: 500px;
         }
@@ -53,12 +52,6 @@
                             <tr>
                                 <td>版块名称:</td>
                                 <td>${boards.boardName}</td>
-                            </tr>
-                            <tr>
-                                <td>版块描述:</td>
-                                <td style="max-width: 300px;width: 300px">
-                                    <span style="width: 80%">${boards.boardDesc}</span>
-                                </td>
                             </tr>
                             <tr>
                                 <td>版块总帖数:</td>

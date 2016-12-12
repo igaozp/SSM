@@ -66,4 +66,11 @@
         DELETE FROM t_reply
         WHERE t_reply.reply_id = #{replyId}
     </delete>
+    <!--通过id查找回复-->
+    <select id="findReplyByReplyId" parameterType="int" resultMap="ReplyMap">
+        SELECT
+        <include refid="Reply_columns"/>
+        FROM t_reply
+        WHERE t_reply.reply_id = #{replyId}
+    </select>
 </mapper>

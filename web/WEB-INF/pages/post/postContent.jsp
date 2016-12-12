@@ -82,7 +82,7 @@
                                     <div class="mdl-card__supporting-text">
                                             ${reply.replyContent}
                                     </div>
-                                    <c:if test="${username == reply.replyUserName}">
+                                    <c:if test="${username == reply.replyUserName or username == 'admin'}">
                                         <div class="mdl-card__actions" align="right">
                                             <a class="mdl-button mdl-js-button mdl-color-text--pink-400"
                                                href="/admin/deleteReply?replyId=${reply.replyId}&replyPostId=${reply.replyPostId}">

@@ -101,9 +101,15 @@
         </if>
         WHERE board_id = #{boardId}
     </update>
-
+    <!--通过id删除板块-->
     <delete id="deleteBoardById" parameterType="int">
         DELETE FROM t_board
         WHERE t_board.board_id = #{boardId}
     </delete>
+    <!--查找相应版块的主题数量-->
+    <select id="boardPostNum" parameterType="int" resultType="int">
+        SELECT board_post_num
+        FROM t_board
+        WHERE t_board.board_id = #{boardId}
+    </select>
 </mapper>

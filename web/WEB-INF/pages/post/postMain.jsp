@@ -14,6 +14,10 @@
         .clear-height {
             min-height: auto;
         }
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -51,9 +55,9 @@
         <div class="page-content">
             <c:forEach items="${board.posts}" var="post" varStatus="status">
                 <div class="mdl-grid">
-                    <div class="mdl-cell--4-col"></div>
-                    <div class="mdl-cell--4-col">
-                        <div class="mdl-card mdl-shadow--2dp card-width clear-height">
+                    <div class="mdl-cell mdl-cell--3-col"></div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div class="card-width clear-height center mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title">
                                 <h4 class="mdl-color-text--pink-400">
                                     <a href="/post/postContent-${post.postId}">${post.postTitle}</a>
@@ -81,7 +85,7 @@
                             </c:choose>
                         </div>
                     </div>
-                    <div class="mdl-cell--4-col"></div>
+                    <div class="mdl-cell mdl-cell--3-col"></div>
                 </div>
             </c:forEach>
         </div>

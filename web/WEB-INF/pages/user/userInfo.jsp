@@ -110,8 +110,8 @@
                                         </a>
                                     </td>
                                     <td align="center">
-                                        <a href="/" class="mdl-button mdl-js-button mdl-button--raised">
-                                            返回首页
+                                        <a href="/main" class="mdl-button mdl-js-button mdl-button--raised">
+                                            返回
                                         </a>
                                     </td>
                                 </tr>

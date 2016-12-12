@@ -68,6 +68,12 @@
         <include refid="post_columns"/>
         FROM t_post
     </select>
+    <!--更新主题信息-->
+    <update id="updatePostByPost" parameterType="Post">
+        UPDATE t_post
+        SET post_reply_count = #{postReplyCount}
+        WHERE t_post.post_id = #{postId}
+    </update>
     <!--删除帖子-->
     <select id="deletePostById" parameterType="int">
         DELETE FROM t_post

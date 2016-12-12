@@ -12,4 +12,6 @@ public interface ReplyDao {
     public List<Reply> listReplyByPostId(int postId);
 
     public void deleteReplyById(int postId);
+
+    public Reply findReplyByReplyId(int replyId);
 }
