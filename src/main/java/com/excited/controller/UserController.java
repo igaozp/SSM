@@ -60,15 +60,14 @@ public class UserController {
         }
 
         // 登录失败，跳转页面
-        request.getSession().setAttribute("Msg", "登录失败！");
-        return "user/loginStatus";
+        request.setAttribute("Msg", "登录失败");
+        return "error";
     }
 
     // 用户注册
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String userRegister(User userRegister, HttpServletRequest request) {
         User user = userRegister;
-        HttpSession session = request.getSession();
         if (user != null) {
             try {
                 String username = user.getUserName();
@@ -92,21 +91,21 @@ public class UserController {
                     loginLogService.addUserLoginLog(userLoginLog);
 
                     // 注册成功跳转
-                    session.setAttribute("username", username);
+                    request.setAttribute("username", username);
                     return "index";
                 } else {
-                    session.setAttribute("Msg", "注册失败，用户名已被占用！");
-                    return "user/loginStatus";
+                    request.setAttribute("Msg", "注册失败，用户名已被占用！");
+                    return "error";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                session.setAttribute("Msg", "发生未知错误！");
-                return "user/loginStatus";
+                request.setAttribute("Msg", "发生未知错误！");
+                return "error";
             }
         }
 
-        session.setAttribute("Msg", "发生未知错误！");
-        return "user/loginStatus";
+        request.setAttribute("Msg", "发生未知错误！");
+        return "error";
     }
 
     // 显示个人信息

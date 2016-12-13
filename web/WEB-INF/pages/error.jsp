@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +15,6 @@
 <body id="t" class="offline">
 
 <div id="main-frame-error" class="interstitial-wrapper">
-
     <div id="main-content">
     </div>
 </div>
@@ -33,7 +34,7 @@
     <br/>
     <br/>
     <br/>
-    <h4>error</h4>
+    <h4>${Msg}</h4>
     <h4><a href="/" class="mdl-color-text--pink-400">Excited</a></h4>
 </div>
 <script src="../resources/js/game.js"></script>

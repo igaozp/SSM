@@ -10,11 +10,16 @@
     <style>
         table{
             table-layout: fixed;
+            min-width: 1024px;
         }
         td{
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+        }
+        .center {
+            margin-right: auto;
+            margin-left: auto;
         }
     </style>
 </head>
@@ -25,7 +30,7 @@
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--grey-50">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400">Excited</a>
+            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400" href="/admin/manageCenter">Excited</a>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
@@ -41,9 +46,9 @@
             <!-- Your content goes here -->
             <c:forEach items="${posts}" varStatus="status" var="post">
                 <div class="mdl-grid">
-                    <div class="mdl-cell--3-col"></div>
-                    <div class="mdl-cell--6-col">
-                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" align="center">
+                    <%--<div class="mdl-cell--2-col"></div>--%>
+                    <div class="center mdl-cell--12-col">
+                        <table class="center mdl-data-table mdl-js-data-table mdl-shadow--2dp" align="center">
                             <thead>
                             <tr>
                                 <th>主题名称</th>
@@ -56,7 +61,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td width="450px">${post.postTitle}</td>
+                                <td width="400px">${post.postTitle}</td>
                                 <td width="100px">${post.postUserName}</td>
                                 <td>${post.postId}</td>
                                 <td>${post.postReplyCount}</td>
@@ -66,7 +71,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="mdl-cell--3-col"></div>
+                    <%--<div class="mdl-cell--2-col"></div>--%>
                 </div>
             </c:forEach>
         </div>

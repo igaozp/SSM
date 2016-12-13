@@ -25,7 +25,8 @@
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--grey-50">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400" href="/">Excited</a>
+            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400"
+               href="/board/listPosts-${post.postBoardId}">Excited</a>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
