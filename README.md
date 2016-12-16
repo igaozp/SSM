@@ -1,5 +1,5 @@
 # SSM
-Spring + Mybatis + MySql 构建的简易论坛系统
+Spring + Spring MVC + Mybatis 构建的简易论坛系统
 
 务必修改jdbc.properties配置文件的jdbc_username&jdbc_password 
 
