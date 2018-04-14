@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="endorphin.dao.ReplyDao">
+    <resultMap id="replyMap" type="Reply">
+        <id property="replyId" column="reply_id"/>
+        <result property="replyPostId" column="reply_post_id"/>
+        <result property="replyUserName" column="reply_user_name"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyGoodCount" column="reply_good_count"/>
+        <result property="replyBadCount" column="reply_bad_count"/>
+        <result property="replyCreateTime" column="reply_create_time"/>
+    </resultMap>
+
+    <resultMap id="replyAndUserMap" type="Reply">
+        <id property="replyId" column="reply_id"/>
+        <result property="replyPostId" column="reply_post_id"/>
+        <result property="replyUserName" column="reply_user_name"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyGoodCount" column="reply_good_count"/>
+        <result property="replyBadCount" column="reply_bad_count"/>
+        <result property="replyCreateTime" column="reply_create_time"/>
+        <collection property="user" ofType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="password" column="password"/>
+            <result property="userPhone" column="user_phone"/>
+            <result property="userEmail" column="user_email"/>
+            <result property="userSex" column="user_sex"/>
+            <result property="createTime" column="create_time"/>
+            <result property="userType" column="user_type"/>
+            <result property="userState" column="user_state"/>
+            <result property="credit" column="credit"/>
+            <result property="lastLoginTime" column="last_login_time"/>
+            <result property="lastIp" column="last_ip"/>
+        </collection>
+    </resultMap>
+
+    <sql id="replyColumns">
+        reply_id,reply_post_id,reply_user_name,reply_content,
+        reply_good_count,reply_bad_count,reply_create_time
+    </sql>
+
+    <!--显示所有回复-->
+    <select id="listAllReply" resultMap="replyMap">
+        SELECT <include refid="replyColumns"/> FROM reply
+    </select>
+
+    <!--通过帖子id查找帖子回复-->
+    <select id="listReplyByPostId" parameterType="int" resultMap="replyMap">
+        SELECT <include refid="replyColumns"/> FROM reply
+        WHERE reply_post_id = #{replyPostId}
+    </select>
+
+    <!--添加回复-->
+    <insert id="addReply" parameterType="Reply" keyProperty="replyId" useGeneratedKeys="true">
+        INSERT INTO reply
+        (reply_post_id,reply_user_name,reply_content,reply_create_time)
+        VALUES
+        (#{replyPostId}, #{replyUserName}, #{replyContent}, #{replyCreateTime})
+    </insert>
+
+    <!--删除回复-->
+    <delete id="deleteReplyById" parameterType="int">
+        DELETE FROM reply
+        WHERE reply.reply_id = #{replyId}
+    </delete>
+
+    <!--通过id查找回复-->
+    <select id="findReplyByReplyId" parameterType="int" resultMap="replyMap">
+        SELECT <include refid="replyColumns"/>
+        FROM reply WHERE reply.reply_id = #{replyId}
+    </select>
+</mapper>

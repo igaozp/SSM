@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="endorphin.dao.BoardDao">
+    <resultMap id="boardMap" type="Board">
+        <id property="boardId" column="board_id"/>
+        <result property="boardName" column="board_name"/>
+        <result property="boardDesc" column="board_desc"/>
+        <result property="boardPostNum" column="board_post_num"/>
+    </resultMap>
+
+    <resultMap id="boardAndPostMap" type="Board">
+        <id property="boardId" column="board_id"/>
+        <result property="boardName" column="board_name"/>
+        <result property="boardDesc" column="board_desc"/>
+        <result property="boardPostNum" column="board_post_num"/>
+        <collection property="posts" ofType="Post">
+            <id property="postId" column="post_id"/>
+            <result property="postBoardId" column="post_board_id"/>
+            <result property="postUserName" column="post_user_name"/>
+            <result property="postTitle" column="post_title"/>
+            <result property="postContent" column="post_content"/>
+            <result property="postGoodCount" column="post_good_count"/>
+            <result property="postBadCount" column="post_bad_count"/>
+            <result property="postViewCount" column="post_view_count"/>
+            <result property="postReplyCount" column="post_reply_count"/>
+            <result property="postStatus" column="post_status"/>
+            <result property="postCreateTime" column="post_create_time"/>
+            <result property="postUpdateTime" column="post_update_time"/>
+        </collection>
+    </resultMap>
+
+    <sql id="boardColumns">
+      board_id,board_name,board_desc,board_post_num
+    </sql>
+
+    <!--显示论坛所有板块-->
+    <select id="listAllBoard" resultMap="boardMap">
+        SELECT <include refid="boardColumns"/> FROM board
+    </select>
+
+    <!--通过id查找板块-->
+    <select id="findBoardByBoardId" resultMap="boardMap">
+        SELECT
+        <include refid="boardColumns"/>
+        FROM board
+        WHERE board_id = #{boardId}
+    </select>
+
+    <!--通过名称查找板块-->
+    <select id="findBoardByBoardName" resultMap="boardMap">
+        SELECT
+        <include refid="boardColumns"/>
+        FROM board
+        WHERE board_name = #{boardName}
+    </select>
+
+    <!--显示板块中的帖子-->
+    <select id="listAllPostsOfBoard" resultMap="boardAndPostMap">
+        SELECT *
+        FROM board B, post P
+        WHERE B.board_id = P.post_board_id AND B.board_id = #{boardId}
+    </select>
+
+    <!--添加新板块-->
+    <insert id="addBoard" parameterType="Board" keyProperty="boardId" useGeneratedKeys="true">
+        INSERT INTO board
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="boardName != null">
+                board_name,
+            </if>
+            <if test="boardDesc != null">
+                board_desc,
+            </if>
+            <if test="boardPostNum != null">
+                board_post_num
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="boardName != null">
+                #{boardName},
+            </if>
+            <if test="boardDesc != null">
+                #{boardDesc},
+            </if>
+            <if test="boardPostNum != null">
+                #{boardPostNum}
+            </if>
+        </trim>
+    </insert>
+
+    <!--更新板块数据-->
+    <update id="updateBoardByBoard" parameterType="Board">
+        UPDATE board
+        SET
+        <if test="boardName != null">
+            board_name = #{boardName},
+        </if>
+        <if test="boardDesc != null">
+            board_desc = #{boardDesc},
+        </if>
+        <if test="boardPostNum != null">
+            board_post_num = #{boardPostNum}
+        </if>
+        WHERE board_id = #{boardId}
+    </update>
+
+    <!--通过id删除板块-->
+    <delete id="deleteBoardById" parameterType="int">
+        DELETE FROM board WHERE board.board_id = #{boardId}
+    </delete>
+
+    <!--查找相应版块的主题数量-->
+    <select id="boardPostNum" parameterType="int" resultType="int">
+        SELECT board_post_num FROM board
+        WHERE board.board_id = #{boardId}
+    </select>
+</mapper>

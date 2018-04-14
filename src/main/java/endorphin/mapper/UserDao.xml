@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="endorphin.dao.UserDao">
+    <!--User结果集-->
+    <resultMap id="userMap" type="User">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userSex" column="user_sex"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userType" column="user_type"/>
+        <result property="userState" column="user_state"/>
+        <result property="credit" column="credit"/>
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="lastIp" column="last_ip"/>
+    </resultMap>
+
+    <sql id="userColumns">
+        user_id,user_name,user_phone,user_email,user_sex,create_time,user_type,user_state,
+        credit,last_login_time,last_ip
+    </sql>
+
+    <!--根据用户名查找用户-->
+    <select id="findUserByUserName" parameterType="String" resultMap="userMap">
+        SELECT <include refid="userColumns"/>
+        FROM user
+        WHERE user_name = #{userName}
+    </select>
+
+    <!--根据用户名查找用户密码-->
+    <select id="getUserPasswordByUserName" parameterType="String" resultType="String">
+        SELECT password
+        FROM user
+        WHERE user_name = #{userName}
+    </select>
+
+    <!--获取所有用户信息-->
+    <select id="getAllUserInfo" resultMap="userMap">
+        SELECT <include refid="userColumns"/>
+        FROM user
+    </select>
+
+    <!--通过id查找用户-->
+    <select id="findUserByUserId" parameterType="int" resultType="endorphin.domain.User">
+        SELECT <include refid="userColumns"/>
+        FROM user
+        WHERE user_id = #{userId}
+    </select>
+
+    <!--插入用户信息-->
+    <insert id="addUser" parameterType="User" keyProperty="userId" useGeneratedKeys="true">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="userEmail != null">
+                user_email,
+            </if>
+            <if test="userSex != null">
+                user_sex,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="lastLoginTime != null ">
+                last_login_time,
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                last_ip
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                #{userName, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone, jdbcType=INTEGER},
+            </if>
+            <if test="userEmail != null">
+                #{userEmail, jdbcType=VARCHAR},
+            </if>
+            <if test="userSex != null">
+                #{userSex, jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastLoginTime != null">
+                #{lastLoginTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastIp != null and lastIp != '' ">
+                #{lastIp, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--根据用户名删除用户信息-->
+    <delete id="deleteUserByUserName" parameterType="String">
+        DELETE FROM user
+        WHERE user_name = #{userName}
+    </delete>
+
+    <!--更新用户信息-->
+    <update id="updateUserByUserName" parameterType="User">
+        UPDATE user
+        SET
+        <if test="password != null and password != '' ">
+            password = #{password},
+        </if>
+        <if test="userPhone != null and userPhone != '' ">
+            user_phone = #{userPhone},
+        </if>
+        <if test="userEmail != null and userEmail != '' ">
+            user_email = #{userEmail},
+        </if>
+        <if test="userSex != null and userSex != '' ">
+            user_sex = #{userSex},
+        </if>
+        <if test="createTime != null ">
+            create_time = #{createTime},
+        </if>
+        <if test="credit != null and credit != '' ">
+            credit = #{credit},
+        </if>
+        <if test="lastLoginTime != null ">
+            last_login_time = #{lastLoginTime},
+        </if>
+        <if test="lastIp != null and lastIp != '' ">
+            last_ip = #{lastIp}
+        </if>
+        WHERE user_name = #{userName}
+    </update>
+</mapper>

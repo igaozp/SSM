@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="endorphin.dao.PostDao">
+    <!-- postMap -->
+    <resultMap id="postMap" type="Post">
+        <id property="postId" column="post_id"/>
+        <result property="postBoardId" column="post_board_id"/>
+        <result property="postUserName" column="post_user_name"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postContent" column="post_content"/>
+        <result property="postGoodCount" column="post_good_count"/>
+        <result property="postBadCount" column="post_bad_count"/>
+        <result property="postViewCount" column="post_view_count"/>
+        <result property="postReplyCount" column="post_reply_count"/>
+        <result property="postStatus" column="post_status"/>
+        <result property="postCreateTime" column="post_create_time"/>
+        <result property="postUpdateTime" column="post_update_time"/>
+    </resultMap>
+
+    <resultMap id="postAndUserAndReplyMap" type="Post">
+        <id property="postId" column="post_id"/>
+        <result property="postBoardId" column="post_board_id"/>
+        <result property="postUserName" column="post_user_name"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postContent" column="post_content"/>
+        <result property="postGoodCount" column="post_good_count"/>
+        <result property="postBadCount" column="post_bad_count"/>
+        <result property="postViewCount" column="post_view_count"/>
+        <result property="postReplyCount" column="post_reply_count"/>
+        <result property="postStatus" column="post_status"/>
+        <result property="postCreateTime" column="post_create_time"/>
+        <result property="postUpdateTime" column="post_update_time"/>
+        <association property="user" javaType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="userSex" column="user_sex"/>
+            <result property="userType" column="user_type"/>
+            <result property="userState" column="user_state"/>
+            <result property="credit" column="credit"/>
+            <result property="lastLoginTime" column="last_login_time"/>
+        </association>
+        <collection property="replies" ofType="Reply">
+            <id property="replyId" column="reply_id"/>
+            <result property="replyPostId" column="reply_post_id"/>
+            <result property="replyUserName" column="reply_user_name"/>
+            <result property="replyContent" column="reply_content"/>
+            <result property="replyGoodCount" column="reply_good_count"/>
+            <result property="replyBadCount" column="reply_bad_count"/>
+            <result property="replyCreateTime" column="reply_create_time"/>
+        </collection>
+    </resultMap>
+
+    <sql id="postColumns">
+        post_id,post_board_id,post_user_name,post_title,post_content,post_good_count,
+        post_bad_count,post_view_count,post_reply_count,post_status,post_create_time,post_update_time
+    </sql>
+
+    <!--通过id查找帖子-->
+    <select id="findPostByPostId" parameterType="int" resultMap="postAndUserAndReplyMap">
+        SELECT * FROM post
+        WHERE post.post_id = #{postId}
+    </select>
+
+    <!--列出全部主题信息-->
+    <select id="listAllPostInfo" resultMap="postMap">
+        SELECT <include refid="postColumns"/> FROM post
+    </select>
+
+    <!--更新主题信息-->
+    <update id="updatePostByPost" parameterType="Post">
+        UPDATE post
+        SET post_reply_count = #{postReplyCount}
+        WHERE post.post_id = #{postId}
+    </update>
+
+    <!--删除帖子-->
+    <select id="deletePostById" parameterType="int">
+        DELETE FROM post
+        WHERE post.post_id = #{postId}
+    </select>
+
+    <!--添加帖子-->
+    <insert id="addPost" parameterType="Post" keyProperty="postId" useGeneratedKeys="true">
+        INSERT INTO post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="postBoardId != null">
+                post_board_id,
+            </if>
+            <if test="postUserName != null">
+                post_user_name,
+            </if>
+            <if test="postTitle != null">
+                post_title,
+            </if>
+            <if test="postContent != null">
+                post_content,
+            </if>
+            <if test="postCreateTime != null">
+                post_create_time,
+            </if>
+            <if test="postUpdateTime != null">
+                post_update_time
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="postBoardId != null">
+                #{postBoardId},
+            </if>
+            <if test="postUserName != null">
+                #{postUserName},
+            </if>
+            <if test="postTitle != null">
+                #{postTitle},
+            </if>
+            <if test="postContent != null">
+                #{postContent},
+            </if>
+            <if test="postCreateTime != null">
+                #{postCreateTime},
+            </if>
+            <if test="postUpdateTime != null">
+                #{postUpdateTime}
+            </if>
+        </trim>
+    </insert>
+</mapper>
