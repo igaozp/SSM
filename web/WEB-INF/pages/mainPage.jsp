@@ -1,82 +1,86 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+  User: igaozp
+  Date: 2018/4/14
+  Time: 18:34
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+
     <title>板块</title>
-    <link rel="stylesheet" href="../resources/css/material-icons.css">
-    <link rel="stylesheet" href="../resources/css/material.min.css">
-    <script type="text/javascript" src="../resources/js/material.min.js"></script>
-    <script type="text/javascript" src="../resources/js/jquery-3.1.1.min.js"></script>
-    <style>
-        .card-width {
-            width: 600px;
-        }
-        .center {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .mdl-card {
-            min-height: auto;
-        }
-    </style>
 </head>
 <body>
-<!-- Uses a header that scrolls with the text, rather than staying
-  locked at the top -->
-<div class="mdl-layout mdl-js-layout">
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--grey-50">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400" href="/">Excited</a>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation -->
-            <nav class="mdl-navigation">
+<%-- 论坛版块页面 --%>
+<div>
+    <%-- 导航栏 --%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand text-white ml-lg-5" href="/">
+            Endorphin
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <%-- 导航栏操作项目 --%>
+        <div class="collapse navbar-collapse mr-lg-5 justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
                 <c:choose>
-                    <c:when test="${username !=null}">
-                        <a class="mdl-navigation__link mdl-color-text--pink-400"
-                           href="/user/listUserInfo?username=${username}">${username}</a>
+                    <c:when test="${username != null}">
                         <c:if test="${username == 'admin'}">
-                            <a class="mdl-navigation__link mdl-color-text--black" href="/admin/manageCenter">登入管理后台</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/manageCenter">管理后台</a>
+                            </li>
                         </c:if>
-                        <a class="mdl-navigation__link mdl-color-text--black" href="/user/loginOut">注销</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/loginOut">注销</a>
+                        </li>
                     </c:when>
                     <c:when test="${username == null}">
-                        <a class="mdl-navigation__link mdl-color-text--pink-400" href="/userLogin">登录</a>
-                        <a class="mdl-navigation__link mdl-color-text--pink-400" href="/userRegister">注册</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userLogin">登录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userRegister">注册</a>
+                        </li>
                     </c:when>
                 </c:choose>
-            </nav>
+            </ul>
         </div>
-    </header>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <!-- Your content goes here -->
-            <c:forEach items="${board}" var="board" varStatus="status">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--3-col"></div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="card-width center mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title">
-                                <h2 class="mdl-card__title-text">
-                                    <a class="mdl-color--text--pink-400" href="/board/listPosts-${board.boardId}">
-                                        ${board.boardName}
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                ${board.boardDesc}
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <p class="mdl-navigation__link" align="right">帖子:${board.boardPostNum}</p>
-                            </div>
+    </nav>
+
+    <%-- 板块列表 --%>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="board-list mt-lg-3">
+                <c:forEach items="${board}" var="board" varStatus="status">
+                    <div class="card text-secondary bg-light mb-3 w-auto">
+                        <div class="card-header">🙃</div>
+                        <div class="card-body">
+                            <h5 class="card-title">${board.boardName}</h5>
+                            <p class="card-text">${board.boardDesc}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/board/listPosts-${board.boardId}" class="btn btn-primary">Go
+                                to ${board.boardName}</a>
                         </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--3-col"></div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </div>
-    </main>
+        <div class="col-3"></div>
+    </div>
 </div>
+
+<script src="../resources/bootstrap/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/popper.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
