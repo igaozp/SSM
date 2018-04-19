@@ -1,19 +1,20 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
+<%--
+  User: igaozp
+  Date: 2018/4/19
+  Time: 17:10
+--%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-    <title i18n-content="title">Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../resources/css/game.css">
-    <link rel="stylesheet" href="../resources/css/material-icons.css">
-    <link rel="stylesheet" href="../resources/css/material.min.css">
-    <script type="text/javascript" src="../resources/js/material.min.js"></script>
-    <script type="text/javascript" src="../resources/js/jquery-3.1.1.min.js"></script>
+
+    <title>Error</title>
 </head>
 <body id="t" class="offline">
-
 <div id="main-frame-error" class="interstitial-wrapper">
     <div id="main-content">
     </div>
@@ -35,8 +36,14 @@
     <br/>
     <br/>
     <h4>${Msg}</h4>
-    <h4><a href="/" class="mdl-color-text--pink-400">Excited</a></h4>
+    <h4>
+        <a href="/" class="btn btn-outline-secondary" role="button">Endorphin</a>
+    </h4>
 </div>
+
 <script src="../resources/js/game.js"></script>
+<script src="../resources/bootstrap/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/popper.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
