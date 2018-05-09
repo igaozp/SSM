@@ -1,80 +1,72 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+  User: igaozp
+  Date: 2018/5/9
+  Time: 20:14
+--%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>注册</title>
-    <link rel="stylesheet" href="../../resources/css/material-icons.css">
-    <link rel="stylesheet" href="../../resources/css/material.min.css">
-    <link rel="stylesheet" href="../../resources/css/style.css">
-    <script type="text/javascript" src="../../resources/js/material.min.js"></script>
-    <script type="text/javascript" src="../../resources/js/jquery-3.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+
+    <title>Endorphin - 注册</title>
 </head>
 <body>
-<!-- Uses a header that scrolls with the text, rather than staying
-  locked at the top -->
-<div class="mdl-layout mdl-js-layout">
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--grey-50">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <a class="mdl-layout-title mdl-navigation__link mdl-color-text--pink-400" href="/main">Excited</a>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation -->
-            <nav class="mdl-navigation">
-            </nav>
-        </div>
-    </header>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <!-- Your content goes here -->
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--4"></div>
-                <div class="mdl-cell mdl-cell--4">
-                    <form name="form" action="/user/register" method="post">
-                        <div class="mdl-card mdl-shadow--2dp center" align="center">
-                            <div class="mdl-card__title">
-                                <h5 class="mdl-color-text--pink-400">欢迎注册</h5>
-                            </div>
-                            <div class="mdl-card__subtitle-text">
-                                <div class="mdl-textfield mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" id="userName" name="userName">
-                                    <label class="mdl-textfield__label" for="userName">用户名</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="password" id="password" name="password">
-                                    <label class="mdl-textfield__label" for="password">密码</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="email" id="userEmail" name="userEmail">
-                                    <label class="mdl-textfield__label" for="userEmail">邮箱</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" id="userPhone" name="userPhone">
-                                    <label class="mdl-textfield__label" for="userPhone">手机</label>
-                                </div>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sex-1">
-                                    <input type="radio" id="sex-1" class="mdl-radio__button" name="userSex"
-                                           value="男" checked>
-                                    <span class="mdl-radio__label">男</span>
-                                </label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sex-2">
-                                    <input type="radio" id="sex-2" class="mdl-radio__button" name="userSex"
-                                           value="女">
-                                    <span class="mdl-radio__label">女</span>
-                                </label>
-                            </div>
-                            <div class="mdl-card__actions">
-                                <input class="mdl-button mdl-button--raised mdl-js-button mdl-color-text--white mdl-color--pink-400 mdl-color-text--white"
-                                       type="submit" value="注册" name="submit">
+<%-- 注册页面导航栏 --%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-white ml-lg-5" href="/">
+        Endorphin
+    </a>
 
-                                <a class="mdl-button mdl-js-button mdl-button--raised" href="/">返回</a>
-                            </div>
-                        </div>
-                    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <%-- 导航栏操作项目 --%>
+    <div class="collapse navbar-collapse mr-lg-5 justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+            <c:when test="${username == null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/userLogin">登录</a>
+                </li>
+            </c:when>
+        </ul>
+    </div>
+</nav>
+
+<%-- 注册部分 --%>
+<div class="container mt-lg-5">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form action="/user/register" method="post">
+                <div class="form-group">
+                    <label for="userName">用户名</label>
+                    <input type="text" class="form-control" id="userName" name="userName"
+                           aria-describedby="userNameHelp" placeholder="输入用户名">
                 </div>
-                <div class="mdl-cell mdl-cell--4"></div>
-            </div>
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="输入邮箱">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="输入密码">
+                </div>
+                <button type="submit" class="btn btn-primary">注册</button>
+                <a href="/userLogin" class="btn btn-secondary ml-3">登录</a>
+            </form>
         </div>
-    </main>
+        <div class="col-3"></div>
+    </div>
 </div>
+
+
+<script src="../resources/bootstrap/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/popper.min.js" crossorigin="anonymous"></script>
+<script src="../resources/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
