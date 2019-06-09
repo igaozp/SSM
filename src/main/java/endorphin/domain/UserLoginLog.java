@@ -11,6 +11,8 @@ import java.sql.Timestamp;
  * @since 2016
  */
 public class UserLoginLog implements Serializable {
+    private static final long serialVersionUID = 7365323641399895467L;
+
     private int loginLogId;
     private String userName;
     private String loginIp;

@@ -1,5 +1,6 @@
 package endorphin.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -9,7 +10,8 @@ import java.sql.Timestamp;
  * @version 1.0
  * @since 2016
  */
-public class Reply {
+public class Reply implements Serializable {
+    private static final long serialVersionUID = -8668422566689445675L;
     /**
      * 文章回复属性
      */

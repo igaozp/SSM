@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @since 2016
  */
 public class User implements Serializable {
+    private static final long serialVersionUID = 8019395076486531566L;
     /**
      * 0代表管理员,  1代表普通用户
      */

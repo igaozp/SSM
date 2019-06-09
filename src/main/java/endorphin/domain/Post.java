@@ -1,5 +1,6 @@
 package endorphin.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
  * @version 1.0
  * @since 2016
  */
-public class Post {
+public class Post implements Serializable {
+    private static final long serialVersionUID = -7854267619669679925L;
     /**
      * 文章的基本属性
      */

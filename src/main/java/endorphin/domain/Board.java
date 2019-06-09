@@ -11,8 +11,9 @@ import java.util.List;
  * @since 2016
  */
 public class Board implements Serializable {
+    private static final long serialVersionUID = -666221904095458263L;
     /**
-     * 板块 id
+     * 板块ID
      */
     private int boardId;
     /**
