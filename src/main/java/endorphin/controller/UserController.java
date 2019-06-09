@@ -4,12 +4,12 @@ import endorphin.domain.User;
 import endorphin.domain.UserLoginLog;
 import endorphin.service.LoginLogService;
 import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 
@@ -17,20 +17,16 @@ import java.sql.Timestamp;
  * UserController
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.1
  * @since 2016
  */
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private final UserService userService;
-    private final LoginLogService loginLogService;
-
-    @Autowired
-    public UserController(UserService userService, LoginLogService loginLogService) {
-        this.userService = userService;
-        this.loginLogService = loginLogService;
-    }
+    @Resource
+    private UserService userService;
+    @Resource
+    private LoginLogService loginLogService;
 
     /**
      * 用户登录

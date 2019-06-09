@@ -2,10 +2,10 @@ package endorphin.controller;
 
 import endorphin.domain.Board;
 import endorphin.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -13,17 +13,13 @@ import java.util.List;
  * MainController
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.1
  * @since 2016
  */
 @Controller
 public class MainController {
-    private final BoardService boardService;
-
-    @Autowired
-    public MainController(BoardService boardService) {
-        this.boardService = boardService;
-    }
+    @Resource
+    private BoardService boardService;
 
     /**
      * 主页

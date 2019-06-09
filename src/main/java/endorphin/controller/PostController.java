@@ -5,11 +5,11 @@ import endorphin.domain.Reply;
 import endorphin.service.BoardService;
 import endorphin.service.PostService;
 import endorphin.service.ReplyService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,16 +24,12 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/post")
 public class PostController {
-    private final PostService postService;
-    private final BoardService boardService;
-    private final ReplyService replyService;
-
-    @Autowired
-    public PostController(PostService postService, BoardService boardService, ReplyService replyService) {
-        this.postService = postService;
-        this.boardService = boardService;
-        this.replyService = replyService;
-    }
+    @Resource
+    private PostService postService;
+    @Resource
+    private BoardService boardService;
+    @Resource
+    private ReplyService replyService;
 
     /**
      * 添加帖子

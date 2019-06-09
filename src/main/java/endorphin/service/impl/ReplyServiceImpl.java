@@ -8,6 +8,7 @@ import endorphin.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,14 +21,10 @@ import java.util.List;
  */
 @Service
 public class ReplyServiceImpl implements ReplyService {
-    private final ReplyDao replyDao;
-    private final PostDao postDao;
-
-    @Autowired
-    public ReplyServiceImpl(ReplyDao replyDao, PostDao postDao) {
-        this.replyDao = replyDao;
-        this.postDao = postDao;
-    }
+    @Resource
+    private ReplyDao replyDao;
+    @Resource
+    private PostDao postDao;
 
     @Override
     public void addReply(Reply reply) {

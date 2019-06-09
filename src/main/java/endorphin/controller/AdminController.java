@@ -7,11 +7,11 @@ import endorphin.service.BoardService;
 import endorphin.service.PostService;
 import endorphin.service.ReplyService;
 import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -19,24 +19,20 @@ import java.util.List;
  * AdminController
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.1
  * @since 2016
  */
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
-    private final BoardService boardService;
-    private final UserService userService;
-    private final PostService postService;
-    private final ReplyService replyService;
-
-    @Autowired
-    public AdminController(BoardService boardService, UserService userService, PostService postService, ReplyService replyService) {
-        this.boardService = boardService;
-        this.userService = userService;
-        this.postService = postService;
-        this.replyService = replyService;
-    }
+    @Resource
+    private BoardService boardService;
+    @Resource
+    private UserService userService;
+    @Resource
+    private PostService postService;
+    @Resource
+    private ReplyService replyService;
 
     /**
      * 论坛管理中心
@@ -71,7 +67,7 @@ public class AdminController {
     /**
      * 添加论坛板块
      *
-     * @param board 新增的论坛版块
+     * @param board   新增的论坛版块
      * @param request 请求
      * @return 页面
      */
@@ -89,7 +85,7 @@ public class AdminController {
     /**
      * 修改板块信息
      *
-     * @param board 修改的板块
+     * @param board   修改的板块
      * @param request 请求
      * @return 页面
      */
@@ -142,7 +138,7 @@ public class AdminController {
     /**
      * 删除已经发表的文章
      *
-     * @param postId 文章 id
+     * @param postId      文章 id
      * @param postBoardId 板块 id
      * @return 页面
      */
@@ -155,7 +151,7 @@ public class AdminController {
     /**
      * 删除回复
      *
-     * @param replyId 回复 id
+     * @param replyId     回复 id
      * @param replyPostId 回复的文章 id
      * @return 页面
      */

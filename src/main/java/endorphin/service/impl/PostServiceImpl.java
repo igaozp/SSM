@@ -5,9 +5,9 @@ import endorphin.dao.PostDao;
 import endorphin.domain.Board;
 import endorphin.domain.Post;
 import endorphin.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,14 +19,10 @@ import java.util.List;
  */
 @Service
 public class PostServiceImpl implements PostService {
-    private final PostDao postDao;
-    private final BoardDao boardDao;
-
-    @Autowired
-    public PostServiceImpl(PostDao postDao, BoardDao boardDao) {
-        this.postDao = postDao;
-        this.boardDao = boardDao;
-    }
+    @Resource
+    private PostDao postDao;
+    @Resource
+    private BoardDao boardDao;
 
     @Override
     public void addPostByPost(Post post) {

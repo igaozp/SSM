@@ -3,9 +3,9 @@ package endorphin.service.impl;
 import endorphin.dao.BoardDao;
 import endorphin.domain.Board;
 import endorphin.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,12 +17,8 @@ import java.util.List;
  */
 @Service
 public class BoardServiceImpl implements BoardService {
-    private final BoardDao boardDao;
-
-    @Autowired
-    public BoardServiceImpl(BoardDao boardDao) {
-        this.boardDao = boardDao;
-    }
+    @Resource
+    private BoardDao boardDao;
 
     @Override
     public void addBoardByBoard(Board board) {
