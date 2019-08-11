@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -25,14 +24,17 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
-    @Resource
-    private BoardService boardService;
-    @Resource
-    private UserService userService;
-    @Resource
-    private PostService postService;
-    @Resource
-    private ReplyService replyService;
+    private final BoardService boardService;
+    private final UserService userService;
+    private final PostService postService;
+    private final ReplyService replyService;
+
+    public AdminController(BoardService boardService, UserService userService, PostService postService, ReplyService replyService) {
+        this.boardService = boardService;
+        this.userService = userService;
+        this.postService = postService;
+        this.replyService = replyService;
+    }
 
     /**
      * 论坛管理中心
@@ -42,7 +44,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/manageCenter")
     public String manageCenter(HttpServletRequest request) {
-        if (request.getSession().getAttribute("username").equals("admin")) {
+        if ("admin".equals(request.getSession().getAttribute("username"))) {
             return "admin/manageCenter";
         }
         return "redirect:/error";
@@ -56,7 +58,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/manageBoard")
     public String manageBoard(HttpServletRequest request) {
-        if (request.getSession().getAttribute("username").equals("admin")) {
+        if ("admin".equals(request.getSession().getAttribute("username"))) {
             List<Board> boards = boardService.listAllBoard();
             request.setAttribute("boards", boards);
             return "admin/manageBoard";

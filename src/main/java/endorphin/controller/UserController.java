@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 
@@ -23,10 +22,13 @@ import java.sql.Timestamp;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Resource
-    private UserService userService;
-    @Resource
-    private LoginLogService loginLogService;
+    private final UserService userService;
+    private final LoginLogService loginLogService;
+
+    public UserController(UserService userService, LoginLogService loginLogService) {
+        this.userService = userService;
+        this.loginLogService = loginLogService;
+    }
 
     /**
      * 用户登录
@@ -84,21 +86,20 @@ public class UserController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String userRegister(User userRegister, HttpServletRequest request) {
-        User user = userRegister;
-        if (user != null) {
+        if (userRegister != null) {
             try {
-                String username = user.getUserName();
+                String username = userRegister.getUserName();
                 String ip = request.getRemoteAddr();
 
                 // 如果数据库中没有该用户，可以注册，否则跳转页面
                 if (userService.getUserByUserName(username) == null) {
 
                     // 添加用户
-                    user.setLastIp(ip);
+                    userRegister.setLastIp(ip);
                     Timestamp createLoginTime = new Timestamp(System.currentTimeMillis());
-                    user.setCreateTime(createLoginTime);
-                    user.setLastLoginTime(createLoginTime);
-                    userService.addUser(user);
+                    userRegister.setCreateTime(createLoginTime);
+                    userRegister.setLastLoginTime(createLoginTime);
+                    userService.addUser(userRegister);
 
                     // 添加用户登录日志
                     UserLoginLog userLoginLog = new UserLoginLog();
@@ -162,9 +163,8 @@ public class UserController {
      */
     @RequestMapping(value = "/updateUserInfo", method = RequestMethod.POST)
     public String updateUserInfo(User user, RedirectAttributes redirectAttributes) {
-        User newUser = user;
-        userService.updateUserByUserName(newUser);
-        redirectAttributes.addAttribute("username", newUser.getUserName());
+        userService.updateUserByUserName(user);
+        redirectAttributes.addAttribute("username", user.getUserName());
         return "redirect:listUserInfo";
     }
 

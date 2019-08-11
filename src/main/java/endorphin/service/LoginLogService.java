@@ -11,11 +11,6 @@ import endorphin.domain.UserLoginLog;
  */
 public interface LoginLogService {
     /**
-     * 获取所有的登录日志
-     */
-    void listAllUserLoginLog();
-
-    /**
      * 添加登录日志
      *
      * @param userLoginLog 新增的登录日志

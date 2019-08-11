@@ -5,10 +5,8 @@ import endorphin.dao.ReplyDao;
 import endorphin.domain.Post;
 import endorphin.domain.Reply;
 import endorphin.service.ReplyService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -21,23 +19,25 @@ import java.util.List;
  */
 @Service
 public class ReplyServiceImpl implements ReplyService {
-    @Resource
-    private ReplyDao replyDao;
-    @Resource
-    private PostDao postDao;
+    private final ReplyDao replyDao;
+    private final PostDao postDao;
+
+    public ReplyServiceImpl(ReplyDao replyDao, PostDao postDao) {
+        this.replyDao = replyDao;
+        this.postDao = postDao;
+    }
 
     @Override
     public void addReply(Reply reply) {
         // 更新post信息
-        Reply dbReply = reply;
         int postId = reply.getReplyPostId();
         Post post = postDao.findPostByPostId(postId);
         post.setPostReplyCount(post.getPostReplyCount() + 1);
         postDao.updatePostByPost(post);
 
         // 添加回复
-        dbReply.setReplyCreateTime(new Timestamp(System.currentTimeMillis()));
-        replyDao.addReply(dbReply);
+        reply.setReplyCreateTime(new Timestamp(System.currentTimeMillis()));
+        replyDao.addReply(reply);
     }
 
     @Override

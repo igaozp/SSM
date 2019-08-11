@@ -19,13 +19,6 @@ public interface BoardService {
     void addBoardByBoard(Board board);
 
     /**
-     * 通过板块名删除板块
-     *
-     * @param boardName 板块名
-     */
-    void deleteBoardByBoardName(String boardName);
-
-    /**
      * 获取所有板块
      *
      * @return 板块列表
@@ -47,14 +40,6 @@ public interface BoardService {
      * @return 查找到的板块
      */
     Board intoBoardByBoardId(int boardId);
-
-    /**
-     * 通过板块名称获取板块
-     *
-     * @param boardName 板块名称
-     * @return 查找到的板块
-     */
-    Board intoBoardByBoardName(String boardName);
 
     /**
      * 更新板块文章数量

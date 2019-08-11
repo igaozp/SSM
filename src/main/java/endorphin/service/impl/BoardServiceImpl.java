@@ -5,7 +5,6 @@ import endorphin.domain.Board;
 import endorphin.service.BoardService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,8 +16,11 @@ import java.util.List;
  */
 @Service
 public class BoardServiceImpl implements BoardService {
-    @Resource
-    private BoardDao boardDao;
+    private final BoardDao boardDao;
+
+    public BoardServiceImpl(BoardDao boardDao) {
+        this.boardDao = boardDao;
+    }
 
     @Override
     public void addBoardByBoard(Board board) {
@@ -26,9 +28,6 @@ public class BoardServiceImpl implements BoardService {
             boardDao.addBoard(board);
         }
     }
-
-    @Override
-    public void deleteBoardByBoardName(String boardName) { }
 
     @Override
     public List<Board> listAllBoard() {
@@ -50,11 +49,6 @@ public class BoardServiceImpl implements BoardService {
         Board board = boardDao.findBoardByBoardId(boardId);
         board.setBoardPostNum(board.getBoardPostNum() + 1);
         boardDao.updateBoardByBoard(board);
-    }
-
-    @Override
-    public Board intoBoardByBoardName(String boardName) {
-        return boardDao.findBoardByBoardName(boardName);
     }
 
     @Override

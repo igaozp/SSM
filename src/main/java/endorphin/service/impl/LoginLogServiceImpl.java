@@ -3,10 +3,7 @@ package endorphin.service.impl;
 import endorphin.dao.UserLoginLogDao;
 import endorphin.domain.UserLoginLog;
 import endorphin.service.LoginLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * LoginLogServiceImpl
@@ -17,11 +14,11 @@ import javax.annotation.Resource;
  */
 @Service
 public class LoginLogServiceImpl implements LoginLogService {
-    @Resource
-    private UserLoginLogDao userLoginLogDao;
+    private final UserLoginLogDao userLoginLogDao;
 
-    @Override
-    public void listAllUserLoginLog() { }
+    public LoginLogServiceImpl(UserLoginLogDao userLoginLogDao) {
+        this.userLoginLogDao = userLoginLogDao;
+    }
 
     @Override
     public void addUserLoginLog(UserLoginLog userLoginLog) {

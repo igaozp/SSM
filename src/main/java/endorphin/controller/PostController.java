@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,12 +23,15 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/post")
 public class PostController {
-    @Resource
-    private PostService postService;
-    @Resource
-    private BoardService boardService;
-    @Resource
-    private ReplyService replyService;
+    private final PostService postService;
+    private final BoardService boardService;
+    private final ReplyService replyService;
+
+    public PostController(PostService postService, BoardService boardService, ReplyService replyService) {
+        this.postService = postService;
+        this.boardService = boardService;
+        this.replyService = replyService;
+    }
 
     /**
      * 添加帖子
@@ -40,13 +42,12 @@ public class PostController {
     @RequestMapping(value = "/addPost")
     public String addPost(Post post) {
         if (post != null) {
-            Post newPost = post;
             Timestamp createLoginTime = new Timestamp(System.currentTimeMillis());
-            newPost.setPostCreateTime(createLoginTime);
-            newPost.setPostUpdateTime(createLoginTime);
+            post.setPostCreateTime(createLoginTime);
+            post.setPostUpdateTime(createLoginTime);
 
-            postService.addPostByPost(newPost);
-            boardService.updatePostNum(newPost.getPostBoardId());
+            postService.addPostByPost(post);
+            boardService.updatePostNum(post.getPostBoardId());
 
             return "redirect:postContent-" + post.getPostId();
         }

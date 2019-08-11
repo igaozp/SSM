@@ -5,7 +5,6 @@ import endorphin.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -18,8 +17,11 @@ import java.util.List;
  */
 @Controller
 public class MainController {
-    @Resource
-    private BoardService boardService;
+    private final BoardService boardService;
+
+    public MainController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     /**
      * 主页

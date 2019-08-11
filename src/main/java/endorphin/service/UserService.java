@@ -1,6 +1,7 @@
 package endorphin.service;
 
 import endorphin.domain.User;
+
 import java.util.List;
 
 /**
@@ -32,13 +33,6 @@ public interface UserService {
      * @return 查找到的用户
      */
     User getUserByUserName(String userName);
-
-    /**
-     * 通过用户名删除用户
-     *
-     * @param userName 用户名
-     */
-    void deleteUserByUserName(String userName);
 
     /**
      * 获取指定用户的密码
