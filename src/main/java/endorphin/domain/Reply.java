@@ -1,5 +1,7 @@
 package endorphin.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -10,6 +12,7 @@ import java.sql.Timestamp;
  * @version 1.1
  * @since 2016
  */
+@Data
 public class Reply implements Serializable {
     private static final long serialVersionUID = -5852618533340752085L;
     /**
@@ -36,64 +39,4 @@ public class Reply implements Serializable {
      * 创建时间
      */
     private Timestamp createTime;
-
-    public Integer getReplyId() {
-        return replyId;
-    }
-
-    public void setReplyId(Integer replyId) {
-        this.replyId = replyId;
-    }
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public void setPostId(Integer postId) {
-        this.postId = postId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getLike() {
-        return like;
-    }
-
-    public void setLike(Integer like) {
-        this.like = like;
-    }
-
-    public Integer getUnLike() {
-        return unLike;
-    }
-
-    public void setUnLike(Integer unLike) {
-        this.unLike = unLike;
-    }
-
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Reply{" +
-                "replyId=" + replyId +
-                ", postId=" + postId +
-                ", content='" + content + '\'' +
-                ", like=" + like +
-                ", unLike=" + unLike +
-                ", createTime=" + createTime +
-                '}';
-    }
 }

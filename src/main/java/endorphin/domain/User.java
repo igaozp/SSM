@@ -1,5 +1,7 @@
 package endorphin.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -10,6 +12,7 @@ import java.sql.Timestamp;
  * @version 1.1
  * @since 2016
  */
+@Data
 public class User implements Serializable {
     private static final long serialVersionUID = 3993708555421708579L;
     /**
@@ -52,100 +55,4 @@ public class User implements Serializable {
      * 用户积分
      */
     private int credit;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserSex() {
-        return userSex;
-    }
-
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
-    }
-
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    public int getUserType() {
-        return userType;
-    }
-
-    public void setUserType(int userType) {
-        this.userType = userType;
-    }
-
-    public int getUserState() {
-        return userState;
-    }
-
-    public void setUserState(int userState) {
-        this.userState = userState;
-    }
-
-    public int getCredit() {
-        return credit;
-    }
-
-    public void setCredit(int credit) {
-        this.credit = credit;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", userPhone='" + userPhone + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userSex='" + userSex + '\'' +
-                ", createTime=" + createTime +
-                ", userType=" + userType +
-                ", userState=" + userState +
-                ", credit=" + credit +
-                '}';
-    }
 }

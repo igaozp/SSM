@@ -1,5 +1,7 @@
 package endorphin.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -10,6 +12,7 @@ import java.sql.Timestamp;
  * @version 1.2
  * @since 2016
  */
+@Data
 public class Board implements Serializable {
     private static final long serialVersionUID = -3819164942441457067L;
     /**
@@ -32,55 +35,4 @@ public class Board implements Serializable {
      * 修改时间
      */
     private Timestamp updateTime;
-
-    public Integer getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(Integer boardId) {
-        this.boardId = boardId;
-    }
-
-    public String getBoardName() {
-        return boardName;
-    }
-
-    public void setBoardName(String boardName) {
-        this.boardName = boardName;
-    }
-
-    public String getBoardDesc() {
-        return boardDesc;
-    }
-
-    public void setBoardDesc(String boardDesc) {
-        this.boardDesc = boardDesc;
-    }
-
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    public Timestamp getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Board{" +
-                "boardId=" + boardId +
-                ", boardName='" + boardName + '\'' +
-                ", boardDesc='" + boardDesc + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
 }

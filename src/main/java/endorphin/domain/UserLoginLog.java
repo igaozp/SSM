@@ -1,5 +1,7 @@
 package endorphin.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -10,6 +12,7 @@ import java.sql.Timestamp;
  * @version 1.2
  * @since 2016
  */
+@Data
 public class UserLoginLog implements Serializable {
     private static final long serialVersionUID = -9055667212150869380L;
     /**
@@ -28,46 +31,4 @@ public class UserLoginLog implements Serializable {
      * 登录时间
      */
     private Timestamp loginTime;
-
-    public Long getLoginLogId() {
-        return loginLogId;
-    }
-
-    public void setLoginLogId(Long loginLogId) {
-        this.loginLogId = loginLogId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public Timestamp getLoginTime() {
-        return loginTime;
-    }
-
-    public void setLoginTime(Timestamp loginTime) {
-        this.loginTime = loginTime;
-    }
-
-    @Override
-    public String toString() {
-        return "UserLoginLog{" +
-                "loginLogId=" + loginLogId +
-                ", userId=" + userId +
-                ", ip='" + ip + '\'' +
-                ", loginTime=" + loginTime +
-                '}';
-    }
 }
