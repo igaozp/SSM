@@ -4,44 +4,60 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * User 用户的实体类
+ * User 用户的实体类，存储用户基本信息
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.1
  * @since 2016
  */
 public class User implements Serializable {
+    private static final long serialVersionUID = 3993708555421708579L;
     /**
-     * 0代表管理员,  1代表普通用户
+     * 用户ID，数据库自增
      */
-    private static final int USER_ADMIN = 0;
-    private static final int USER_NORMAL = 1;
+    private Integer userId;
     /**
-     * 0代表用户未被锁定, 1代表用户锁定
+     * 会员名称
      */
-    private static final int USER_UNLOCK = 0;
-    private static final int USER_LOCK = 1;
-    /**
-     * 用户的基本属性
-     */
-    private int userId;
     private String userName;
+    /**
+     * 用户密码
+     */
     private String password;
-    private int userPhone;
+    /**
+     * 用户手机号
+     */
+    private String userPhone;
+    /**
+     * 用户邮箱
+     */
     private String userEmail;
+    /**
+     * 用户性别
+     */
     private String userSex;
+    /**
+     * 创建时间
+     */
     private Timestamp createTime;
+    /**
+     * 用户类型
+     */
     private int userType;
+    /**
+     * 用户状态
+     */
     private int userState;
+    /**
+     * 用户积分
+     */
     private int credit;
-    private Timestamp lastLoginTime;
-    private String lastIp;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -61,11 +77,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(int userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
@@ -117,35 +133,19 @@ public class User implements Serializable {
         this.credit = credit;
     }
 
-    public Timestamp getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Timestamp lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getLastIp() {
-        return lastIp;
-    }
-
-    public void setLastIp(String lastIp) {
-        this.lastIp = lastIp;
-    }
-
     @Override
     public String toString() {
-        return "User {" +
-                "userId =  " + userId +
-                ", userName = " + userName +
-                ", password = " + password +
-                ", userPhone = " + userPhone +
-                ", userEmail = " + userEmail +
-                ", userSex = " + userSex +
-                ", createTime = " + createTime +
-                ", userType = " + userType +
-                ", userState = " + userState +
-                ", lastLoginTime = " + lastLoginTime +
-                ", lastIp = " + lastIp + "}";
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", createTime=" + createTime +
+                ", userType=" + userType +
+                ", userState=" + userState +
+                ", credit=" + credit +
+                '}';
     }
 }

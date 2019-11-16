@@ -57,8 +57,7 @@ public class UserController {
             Timestamp lastLoginTime = new Timestamp(System.currentTimeMillis());
 
             // 更新用户信息
-            user.setLastIp(lastIp);
-            user.setLastLoginTime(lastLoginTime);
+            // todo 记录IP及登录时间
             user.setCredit(5 + user.getCredit());
             userService.updateUserByUserName(user);
 
@@ -98,10 +97,9 @@ public class UserController {
                 if (userService.getUserByUserName(username) == null) {
 
                     // 添加用户
-                    user.setLastIp(ip);
+                    // todo 记录IP及登录时间
                     Timestamp createLoginTime = new Timestamp(System.currentTimeMillis());
                     user.setCreateTime(createLoginTime);
-                    user.setLastLoginTime(createLoginTime);
                     userService.addUser(user);
 
                     // 添加用户登录日志
