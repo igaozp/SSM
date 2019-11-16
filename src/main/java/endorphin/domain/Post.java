@@ -1,7 +1,7 @@
 package endorphin.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * Post 文章实体类
@@ -10,103 +10,115 @@ import java.util.List;
  * @version 1.0
  * @since 2016
  */
-public class Post {
+public class Post implements Serializable {
+    private static final long serialVersionUID = -3969503478861556288L;
     /**
-     * 文章的基本属性
+     * 文章ID，数据库自增
      */
-    private User user;
-    private int postId;
-    private int postBoardId;
-    private String postUserName;
-    private String postTitle;
-    private String postContent;
-    private int postGoodCount;
-    private int postBadCount;
-    private int postViewCount;
-    private int postReplyCount;
+    private Integer postId;
+    /**
+     * 会员ID
+     */
+    private Integer userId;
+    /**
+     * 文章板块ID
+     */
+    private Integer boardId;
+    /**
+     * 文章标题
+     */
+    private String title;
+    /**
+     * 文章内容
+     */
+    private String content;
+    /**
+     * 文章喜欢数
+     */
+    private Integer like;
+    /**
+     * 文章不喜欢数
+     */
+    private Integer unLike;
+    /**
+     * 文章浏览量
+     */
+    private Integer viewCount;
+    /**
+     * 文章状态
+     */
     private int postStatus;
-    private Timestamp postCreateTime;
-    private Timestamp postUpdateTime;
-    private List<Reply> replies;
+    /**
+     * 创建时间
+     */
+    private Timestamp createTime;
+    /**
+     * 修改时间
+     */
+    private Timestamp updateTime;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getPostId() {
+    public Integer getPostId() {
         return postId;
     }
 
-    public void setPostId(int postId) {
+    public void setPostId(Integer postId) {
         this.postId = postId;
     }
 
-    public int getPostBoardId() {
-        return postBoardId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPostBoardId(int postBoardId) {
-        this.postBoardId = postBoardId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getPostUserName() {
-        return postUserName;
+    public Integer getBoardId() {
+        return boardId;
     }
 
-    public void setPostUserName(String postUserName) {
-        this.postUserName = postUserName;
+    public void setBoardId(Integer boardId) {
+        this.boardId = boardId;
     }
 
-    public String getPostTitle() {
-        return postTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getPostContent() {
-        return postContent;
+    public String getContent() {
+        return content;
     }
 
-    public void setPostContent(String postContent) {
-        this.postContent = postContent;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public int getPostGoodCount() {
-        return postGoodCount;
+    public Integer getLike() {
+        return like;
     }
 
-    public void setPostGoodCount(int postGoodCount) {
-        this.postGoodCount = postGoodCount;
+    public void setLike(Integer like) {
+        this.like = like;
     }
 
-    public int getPostBadCount() {
-        return postBadCount;
+    public Integer getUnLike() {
+        return unLike;
     }
 
-    public void setPostBadCount(int postBadCount) {
-        this.postBadCount = postBadCount;
+    public void setUnLike(Integer unLike) {
+        this.unLike = unLike;
     }
 
-    public int getPostViewCount() {
-        return postViewCount;
+    public Integer getViewCount() {
+        return viewCount;
     }
 
-    public void setPostViewCount(int postViewCount) {
-        this.postViewCount = postViewCount;
-    }
-
-    public int getPostReplyCount() {
-        return postReplyCount;
-    }
-
-    public void setPostReplyCount(int postReplyCount) {
-        this.postReplyCount = postReplyCount;
+    public void setViewCount(Integer viewCount) {
+        this.viewCount = viewCount;
     }
 
     public int getPostStatus() {
@@ -117,44 +129,36 @@ public class Post {
         this.postStatus = postStatus;
     }
 
-    public Timestamp getPostCreateTime() {
-        return postCreateTime;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setPostCreateTime(Timestamp postCreateTime) {
-        this.postCreateTime = postCreateTime;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getPostUpdateTime() {
-        return postUpdateTime;
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 
-    public void setPostUpdateTime(Timestamp postUpdateTime) {
-        this.postUpdateTime = postUpdateTime;
-    }
-
-    public List<Reply> getReplies() {
-        return replies;
-    }
-
-    public void setReplies(List<Reply> replies) {
-        this.replies = replies;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
-        return "Post {" +
-                "postId = " + postId +
-                ", postBoardId = " + postBoardId +
-                ", postUserName = '" + postUserName + '\'' +
-                ", postTitle = '" + postTitle + '\'' +
-                ", postContent = '" + postContent + '\'' +
-                ", postGoodCount = " + postGoodCount +
-                ", postBadCount = " + postBadCount +
-                ", postViewCount = " + postViewCount +
-                ", postReplyCount = " + postReplyCount +
-                ", postStatus = " + postStatus +
-                ", postCreateTime = " + postCreateTime +
-                ", postUpdateTime = " + postUpdateTime + '}';
+        return "Post{" +
+                "postId=" + postId +
+                ", userId=" + userId +
+                ", boardId=" + boardId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", like=" + like +
+                ", unLike=" + unLike +
+                ", viewCount=" + viewCount +
+                ", postStatus=" + postStatus +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

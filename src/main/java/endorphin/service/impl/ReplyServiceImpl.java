@@ -35,7 +35,6 @@ public class ReplyServiceImpl implements ReplyService {
         Reply dbReply = reply;
         int postId = reply.getReplyPostId();
         Post post = postDao.findPostByPostId(postId);
-        post.setPostReplyCount(post.getPostReplyCount() + 1);
         postDao.updatePostByPost(post);
 
         // 添加回复
@@ -53,7 +52,6 @@ public class ReplyServiceImpl implements ReplyService {
         // 更新post信息
         Reply reply = replyDao.findReplyByReplyId(replyId);
         Post post = postDao.findPostByPostId(reply.getReplyPostId());
-        post.setPostReplyCount(post.getPostReplyCount() - 1);
         postDao.updatePostByPost(post);
 
         // 删除回复

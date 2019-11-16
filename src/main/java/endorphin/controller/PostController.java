@@ -46,11 +46,11 @@ public class PostController {
         if (post != null) {
             Post newPost = post;
             Timestamp createLoginTime = new Timestamp(System.currentTimeMillis());
-            newPost.setPostCreateTime(createLoginTime);
-            newPost.setPostUpdateTime(createLoginTime);
+            newPost.setCreateTime(createLoginTime);
+            newPost.setUpdateTime(createLoginTime);
 
             postService.addPostByPost(newPost);
-            boardService.updatePostNum(newPost.getPostBoardId());
+            boardService.updatePostNum(newPost.getBoardId());
 
             return "redirect:postContent-" + post.getPostId();
         }
