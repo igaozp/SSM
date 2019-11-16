@@ -1,20 +1,21 @@
 package endorphin.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.sql.Timestamp;
 
 /**
  * Board 主题板块实体类
  *
  * @author igaozp
- * @version 1.1
+ * @version 1.2
  * @since 2016
  */
 public class Board implements Serializable {
+    private static final long serialVersionUID = -3819164942441457067L;
     /**
-     * 板块 id
+     * 板块ID，数据库自增
      */
-    private int boardId;
+    private Integer boardId;
     /**
      * 板块名称
      */
@@ -24,19 +25,19 @@ public class Board implements Serializable {
      */
     private String boardDesc;
     /**
-     * 板块文章数量
+     * 创建时间
      */
-    private long boardPostNum;
+    private Timestamp createTime;
     /**
-     * 文章列表
+     * 修改时间
      */
-    private List<Post> posts;
+    private Timestamp updateTime;
 
-    public int getBoardId() {
+    public Integer getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(int boardId) {
+    public void setBoardId(Integer boardId) {
         this.boardId = boardId;
     }
 
@@ -56,28 +57,30 @@ public class Board implements Serializable {
         this.boardDesc = boardDesc;
     }
 
-    public long getBoardPostNum() {
-        return boardPostNum;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setBoardPostNum(long boardPostNum) {
-        this.boardPostNum = boardPostNum;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
-        return "Board {" +
-                "boardId = " + boardId +
-                ", boardName = '" + boardName + '\'' +
-                ", boardDesc = '" + boardDesc + '\'' +
-                ", boardPostNum = " + boardPostNum + "}";
+        return "Board{" +
+                "boardId=" + boardId +
+                ", boardName='" + boardName + '\'' +
+                ", boardDesc='" + boardDesc + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

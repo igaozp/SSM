@@ -131,7 +131,7 @@ public class MainController {
             request.setAttribute("boardName", board.getBoardName());
             request.setAttribute("boardDesc", board.getBoardDesc());
             request.setAttribute("boardId", board.getBoardId());
-            request.setAttribute("boardPostNum", board.getBoardPostNum());
+            request.setAttribute("boardPostNum", 0);
             return "/admin/updateBoard";
         }
 
