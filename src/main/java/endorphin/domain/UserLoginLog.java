@@ -7,62 +7,67 @@ import java.sql.Timestamp;
  * UserLoginLog 用户登录日志的实体类
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.2
  * @since 2016
  */
 public class UserLoginLog implements Serializable {
-    private int loginLogId;
-    private String userName;
-    private String loginIp;
-    private Timestamp loginDateTime;
-    private User user;
+    private static final long serialVersionUID = -9055667212150869380L;
+    /**
+     * 用户登录记录ID，数据库自增
+     */
+    private Long loginLogId;
+    /**
+     * 用户ID
+     */
+    private Integer userId;
+    /**
+     * 登录IP
+     */
+    private String ip;
+    /**
+     * 登录时间
+     */
+    private Timestamp loginTime;
 
-    public int getLoginLogId() {
+    public Long getLoginLogId() {
         return loginLogId;
     }
 
-    public void setLoginLogId(int loginLogId) {
+    public void setLoginLogId(Long loginLogId) {
         this.loginLogId = loginLogId;
     }
 
-    public String getUserName() {
-        return userName;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getLoginIp() {
-        return loginIp;
+    public String getIp() {
+        return ip;
     }
 
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
-    public Timestamp getLoginDateTime() {
-        return loginDateTime;
+    public Timestamp getLoginTime() {
+        return loginTime;
     }
 
-    public void setLoginDateTime(Timestamp loginDateTime) {
-        this.loginDateTime = loginDateTime;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setLoginTime(Timestamp loginTime) {
+        this.loginTime = loginTime;
     }
 
     @Override
     public String toString() {
-        return "UserLoginLog {" +
-                "LoginLogId = " + loginLogId +
-                ", UserName = " + userName +
-                ", LoginIp = " + loginIp +
-                ", LoginDateTime = " + loginDateTime + "}";
+        return "UserLoginLog{" +
+                "loginLogId=" + loginLogId +
+                ", userId=" + userId +
+                ", ip='" + ip + '\'' +
+                ", loginTime=" + loginTime +
+                '}';
     }
 }

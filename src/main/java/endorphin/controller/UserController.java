@@ -63,9 +63,9 @@ public class UserController {
 
             // 更新用户登录日志
             UserLoginLog userLoginLog = new UserLoginLog();
-            userLoginLog.setUserName(userName);
-            userLoginLog.setLoginIp(lastIp);
-            userLoginLog.setLoginDateTime(lastLoginTime);
+            userLoginLog.setUserId(user.getUserId());
+            userLoginLog.setIp(lastIp);
+            userLoginLog.setLoginTime(lastLoginTime);
             loginLogService.addUserLoginLog(userLoginLog);
 
             // 登陆成功，跳转到主页
@@ -104,9 +104,9 @@ public class UserController {
 
                     // 添加用户登录日志
                     UserLoginLog userLoginLog = new UserLoginLog();
-                    userLoginLog.setUserName(username);
-                    userLoginLog.setLoginIp(ip);
-                    userLoginLog.setLoginDateTime(createLoginTime);
+                    userLoginLog.setUserId(user.getUserId());
+                    userLoginLog.setIp(ip);
+                    userLoginLog.setLoginTime(createLoginTime);
                     loginLogService.addUserLoginLog(userLoginLog);
 
                     // 注册成功跳转
