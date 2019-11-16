@@ -48,7 +48,6 @@ public class PostServiceImpl implements PostService {
         // 更新Board数据
         int boardId = postDao.findPostByPostId(postId).getBoardId();
         Board board = boardDao.findBoardByBoardId(boardId);
-        board.setBoardPostNum(board.getBoardPostNum() - 1);
         boardDao.updateBoardByBoard(board);
 
         // 删除post

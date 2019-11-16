@@ -38,6 +38,6 @@ public class ReplyController {
     @RequestMapping(value = "addReply", method = RequestMethod.POST)
     public String addReply(Reply reply) {
         replyService.addReply(reply);
-        return "redirect:/post/postContent-" + reply.getReplyPostId();
+        return "redirect:/post/postContent-" + reply.getPostId();
     }
 }

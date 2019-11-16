@@ -33,12 +33,12 @@ public class ReplyServiceImpl implements ReplyService {
     public void addReply(Reply reply) {
         // 更新post信息
         Reply dbReply = reply;
-        int postId = reply.getReplyPostId();
+        int postId = reply.getPostId();
         Post post = postDao.findPostByPostId(postId);
         postDao.updatePostByPost(post);
 
         // 添加回复
-        dbReply.setReplyCreateTime(new Timestamp(System.currentTimeMillis()));
+        dbReply.setCreateTime(new Timestamp(System.currentTimeMillis()));
         replyDao.addReply(dbReply);
     }
 
@@ -51,7 +51,7 @@ public class ReplyServiceImpl implements ReplyService {
     public void deleteReply(int replyId) {
         // 更新post信息
         Reply reply = replyDao.findReplyByReplyId(replyId);
-        Post post = postDao.findPostByPostId(reply.getReplyPostId());
+        Post post = postDao.findPostByPostId(reply.getPostId());
         postDao.updatePostByPost(post);
 
         // 删除回复

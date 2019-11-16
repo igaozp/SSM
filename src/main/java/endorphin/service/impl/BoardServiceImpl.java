@@ -52,7 +52,6 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void updatePostNum(int boardId) {
         Board board = boardDao.findBoardByBoardId(boardId);
-        board.setBoardPostNum(board.getBoardPostNum() + 1);
         boardDao.updateBoardByBoard(board);
     }
 

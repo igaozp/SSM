@@ -1,91 +1,99 @@
 package endorphin.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Reply 回复实体类
  *
  * @author igaozp
- * @version 1.0
+ * @version 1.1
  * @since 2016
  */
-public class Reply {
+public class Reply implements Serializable {
+    private static final long serialVersionUID = -5852618533340752085L;
     /**
-     * 文章回复属性
+     * 文章回复ID，数据库自增
      */
-    private int replyId;
-    private int replyPostId;
-    private String replyUserName;
-    private String replyContent;
-    private int replyGoodCount;
-    private int replyBadCount;
-    private Timestamp replyCreateTime;
+    private Integer replyId;
+    /**
+     * 文章ID
+     */
+    private Integer postId;
+    /**
+     * 回复内容
+     */
+    private String content;
+    /**
+     * 回复喜欢的数量
+     */
+    private Integer like;
+    /**
+     * 回复不喜欢的数量
+     */
+    private Integer unLike;
+    /**
+     * 创建时间
+     */
+    private Timestamp createTime;
 
-    public int getReplyId() {
+    public Integer getReplyId() {
         return replyId;
     }
 
-    public void setReplyId(int replyId) {
+    public void setReplyId(Integer replyId) {
         this.replyId = replyId;
     }
 
-    public int getReplyPostId() {
-        return replyPostId;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setReplyPostId(int replyPostId) {
-        this.replyPostId = replyPostId;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
-    public String getReplyUserName() {
-        return replyUserName;
+    public String getContent() {
+        return content;
     }
 
-    public void setReplyUserName(String replyUserName) {
-        this.replyUserName = replyUserName;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getReplyContent() {
-        return replyContent;
+    public Integer getLike() {
+        return like;
     }
 
-    public void setReplyContent(String replyContent) {
-        this.replyContent = replyContent;
+    public void setLike(Integer like) {
+        this.like = like;
     }
 
-    public int getReplyGoodCount() {
-        return replyGoodCount;
+    public Integer getUnLike() {
+        return unLike;
     }
 
-    public void setReplyGoodCount(int replyGoodCount) {
-        this.replyGoodCount = replyGoodCount;
+    public void setUnLike(Integer unLike) {
+        this.unLike = unLike;
     }
 
-    public int getReplyBadCount() {
-        return replyBadCount;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setReplyBadCount(int replyBadCount) {
-        this.replyBadCount = replyBadCount;
-    }
-
-    public Timestamp getReplyCreateTime() {
-        return replyCreateTime;
-    }
-
-    public void setReplyCreateTime(Timestamp replyCreateTime) {
-        this.replyCreateTime = replyCreateTime;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     @Override
     public String toString() {
-        return "Reply {" +
-                "replyId = " + replyId +
-                ", replyPostId = " + replyPostId +
-                ", replyUserName = " + replyUserName +
-                ", replyContent = " + replyContent +
-                ", replyGoodCount = " + replyGoodCount +
-                ", replyBadCount = " + replyBadCount +
-                ", replyCreateTime = " + replyCreateTime + "}";
+        return "Reply{" +
+                "replyId=" + replyId +
+                ", postId=" + postId +
+                ", content='" + content + '\'' +
+                ", like=" + like +
+                ", unLike=" + unLike +
+                ", createTime=" + createTime +
+                '}';
     }
 }
