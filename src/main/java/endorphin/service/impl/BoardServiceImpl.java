@@ -3,7 +3,7 @@ package endorphin.service.impl;
 import endorphin.dao.BoardDao;
 import endorphin.domain.Board;
 import endorphin.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +16,9 @@ import java.util.List;
  * @since 2016
  */
 @Service
+@AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
     private final BoardDao boardDao;
-
-    @Autowired
-    public BoardServiceImpl(BoardDao boardDao) {
-        this.boardDao = boardDao;
-    }
 
     @Override
     public void addBoardByBoard(Board board) {
@@ -32,7 +28,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void deleteBoardByBoardName(String boardName) { }
+    public void deleteBoardByBoardName(String boardName) {
+    }
 
     @Override
     public List<Board> listAllBoard() {

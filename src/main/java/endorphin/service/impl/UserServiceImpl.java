@@ -3,7 +3,7 @@ package endorphin.service.impl;
 import endorphin.dao.UserDao;
 import endorphin.domain.User;
 import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +16,9 @@ import java.util.List;
  * @since 2016
  */
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
-
-    @Autowired
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
-    }
 
     @Override
     public void addUser(User user) {
@@ -55,7 +51,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserByUserName(String userName) { }
+    public void deleteUserByUserName(String userName) {
+    }
 
     @Override
     public List<User> getAllUser() {

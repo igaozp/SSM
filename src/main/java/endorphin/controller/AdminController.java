@@ -7,7 +7,7 @@ import endorphin.service.BoardService;
 import endorphin.service.PostService;
 import endorphin.service.ReplyService;
 import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,20 +23,13 @@ import java.util.List;
  * @since 2016
  */
 @Controller
+@AllArgsConstructor
 @RequestMapping(value = "/admin")
 public class AdminController {
     private final BoardService boardService;
     private final UserService userService;
     private final PostService postService;
     private final ReplyService replyService;
-
-    @Autowired
-    public AdminController(BoardService boardService, UserService userService, PostService postService, ReplyService replyService) {
-        this.boardService = boardService;
-        this.userService = userService;
-        this.postService = postService;
-        this.replyService = replyService;
-    }
 
     /**
      * 论坛管理中心

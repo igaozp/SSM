@@ -2,13 +2,10 @@ package endorphin.controller;
 
 import endorphin.domain.Reply;
 import endorphin.service.ReplyService;
-import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * ReplyController
@@ -18,16 +15,10 @@ import javax.servlet.http.HttpServletRequest;
  * @since 2016
  */
 @Controller
+@AllArgsConstructor
 @RequestMapping(value = "/reply")
 public class ReplyController {
     private final ReplyService replyService;
-    private final UserService userService;
-
-    @Autowired
-    public ReplyController(ReplyService replyService, UserService userService) {
-        this.replyService = replyService;
-        this.userService = userService;
-    }
 
     /**
      * 添加回复

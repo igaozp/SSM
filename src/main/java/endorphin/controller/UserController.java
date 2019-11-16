@@ -4,7 +4,7 @@ import endorphin.domain.User;
 import endorphin.domain.UserLoginLog;
 import endorphin.service.LoginLogService;
 import endorphin.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,16 +21,11 @@ import java.sql.Timestamp;
  * @since 2016
  */
 @Controller
+@AllArgsConstructor
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
     private final LoginLogService loginLogService;
-
-    @Autowired
-    public UserController(UserService userService, LoginLogService loginLogService) {
-        this.userService = userService;
-        this.loginLogService = loginLogService;
-    }
 
     /**
      * 用户登录

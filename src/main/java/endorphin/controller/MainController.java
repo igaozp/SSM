@@ -2,7 +2,7 @@ package endorphin.controller;
 
 import endorphin.domain.Board;
 import endorphin.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,13 +17,9 @@ import java.util.List;
  * @since 2016
  */
 @Controller
+@AllArgsConstructor
 public class MainController {
     private final BoardService boardService;
-
-    @Autowired
-    public MainController(BoardService boardService) {
-        this.boardService = boardService;
-    }
 
     /**
      * 主页

@@ -5,7 +5,7 @@ import endorphin.dao.ReplyDao;
 import endorphin.domain.Post;
 import endorphin.domain.Reply;
 import endorphin.service.ReplyService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -19,15 +19,10 @@ import java.util.List;
  * @since 2016
  */
 @Service
+@AllArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
     private final ReplyDao replyDao;
     private final PostDao postDao;
-
-    @Autowired
-    public ReplyServiceImpl(ReplyDao replyDao, PostDao postDao) {
-        this.replyDao = replyDao;
-        this.postDao = postDao;
-    }
 
     @Override
     public void addReply(Reply reply) {
