@@ -11,10 +11,10 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--扫描控制器-->
-    <context:component-scan base-package="endorphin.controller"/>
-    <context:component-scan base-package="endorphin.dao"/>
-    <context:component-scan base-package="endorphin.domain"/>
-    <context:component-scan base-package="endorphin.service"/>
+    <context:component-scan base-package="xyz.andornot.endorphin.controller"/>
+    <context:component-scan base-package="xyz.andornot.endorphin.dao"/>
+    <context:component-scan base-package="xyz.andornot.endorphin.domain"/>
+    <context:component-scan base-package="xyz.andornot.endorphin.service"/>
 
     <!--开启注解-->
     <mvc:annotation-driven/>

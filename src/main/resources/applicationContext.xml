@@ -11,7 +11,7 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!--扫描文件-->
-    <context:component-scan base-package="endorphin.service">
+    <context:component-scan base-package="xyz.andornot.endorphin.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -35,7 +35,7 @@
         <!--载入mybatis配置文件-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--载入配置mapper映射的xml-->
-        <property name="mapperLocations" value="classpath*:endorphin/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath*:xyz/andornot/endorphin/mapper/*.xml"/>
     </bean>
 
     <!--创建数据映射器-->
