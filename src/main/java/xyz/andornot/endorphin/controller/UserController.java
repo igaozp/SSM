@@ -15,8 +15,9 @@ import java.sql.Timestamp;
 
 /**
  * UserController
- *
- * @author igaozp
+ * 
+ * @author
+ * igaozp
  * @version 1.0
  * @since 2016
  */
@@ -34,9 +35,9 @@ public class UserController {
 
     /**
      * 用户登录
-     *
+     * 
      * @param loginUser 登录的用户
-     * @param request   请求
+     * @param request 请求
      * @return 返回页面
      */
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
@@ -81,9 +82,9 @@ public class UserController {
 
     /**
      * 用户注册
-     *
+     * 
      * @param userRegister 注册的用户
-     * @param request      请求
+     * @param request 请求
      * @return 返回页面
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -131,9 +132,9 @@ public class UserController {
 
     /**
      * 显示个人信息
-     *
+     * 
      * @param username 用户名
-     * @param request  请求
+     * @param request 请求
      * @return 返回页面
      */
     @RequestMapping(value = "/listUserInfo")
@@ -145,9 +146,9 @@ public class UserController {
 
     /**
      * 修改个人信息页面
-     *
+     * 
      * @param username 用户名
-     * @param request  请求
+     * @param request 请求
      * @return 返回页面
      */
     @RequestMapping(value = "/userUpdateInfo", method = RequestMethod.GET)
@@ -159,8 +160,8 @@ public class UserController {
 
     /**
      * 提交用户修改信息
-     *
-     * @param user               修改后的用户
+     * 
+     * @param user 修改后的用户
      * @param redirectAttributes 重定向
      * @return 重定向页面
      */
@@ -174,7 +175,7 @@ public class UserController {
 
     /**
      * 用户注销功能
-     *
+     * 
      * @param request 请求
      * @return 返回页面
      */
