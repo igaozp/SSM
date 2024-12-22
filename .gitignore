@@ -1,9 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Java template
-# Compiled class file
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 *.log
 
 # BlueJ files
@@ -12,7 +12,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package files
 *.jar
 *.war
 *.nar
@@ -21,7 +21,47 @@
 *.tar.gz
 *.rar
 
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# IDE - VS Code
+.vscode/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Spring Boot
+spring-boot-starter/target/
+application*.yml
+application*.properties
+!application.yml
+!application.properties
+
+# Other
+*.swp
+*.swo
+tmp/
+temp/
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-.idea
