@@ -3,6 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <settings>
+        <!-- 开启驼峰命名转换 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    
     <typeAliases>
         <typeAlias alias="User" type="xyz.andornot.endorphin.domain.User"/>
         <typeAlias alias="Board" type="xyz.andornot.endorphin.domain.Board"/>

@@ -21,7 +21,7 @@
         <result property="replyGoodCount" column="reply_good_count"/>
         <result property="replyBadCount" column="reply_bad_count"/>
         <result property="replyCreateTime" column="reply_create_time"/>
-        <collection property="user" ofType="User">
+        <collection property="user" ofType="User" javaType="User">
             <id property="userId" column="user_id"/>
             <result property="userName" column="user_name"/>
             <result property="password" column="password"/>

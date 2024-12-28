@@ -1,5 +1,6 @@
 package xyz.andornot.endorphin.dao;
 
+import org.apache.ibatis.annotations.Mapper;
 import xyz.andornot.endorphin.domain.UserLoginLog;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @version 1.0
  * @since 1.0
  */
+@Mapper
 @Repository
 public interface UserLoginLogDao {
     /**
